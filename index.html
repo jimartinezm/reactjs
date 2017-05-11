@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prueba de Reactjs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.js"></script>
+    <!--  react permite crear los componentes  y con el dom uso esos componentes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react-dom.js"></script>
+
+  </head>
+  <body>
+    <main id="app"></main>
+    <script>
+      function Hola(props){
+        const name = props.name;
+        return React.DOM.h1({
+          id: 'Title',
+        }, `Hola ${name}`);
+      }
+
+      const hola= React.createElement(Hola, {
+        name: 'jorge',
+      });
+
+      ReactDOM.render(
+        hola,
+        document.getElementById('app')
+      );
+
+      setTimeout(
+        () => {
+          ReactDOM.render(
+            React.createElement(Hola, { name: 'Jorge Martinez'}),
+            document.getElementById('app')
+          )
+        },
+        1000
+      );
+
+    </script>
+  </body>
+</html>
+<!-- los props son todos los datos que queremos pasarle a un componente al momento de iniciarlo -->
+<!-- Con el react.dom lo que hago es decirle que lp retorne todo como un h1 -->
+
+<!-- lo que hago es decile que de forma de titulo escriba el hola y el nombre -->
+
+<!-- const hola= React.createElement(Hola) creo el elemento pasandole el componente y le paso el nombre -->
+
+<!-- con el ReactDOM.render lo que hago es pasar el elemento que acabo de crear con el createElement -->
+
+<!-- document.getElementById('app') lo que hace es hacer que el html sea compatible con el java script -->
+
+<!-- Lo que hace el settimeout es una funcion que despues de 1 segundo cambia el nombre del createElement -->
+
+<!-- los const son los var en javascript anterior. -->
