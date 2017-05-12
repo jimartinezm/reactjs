@@ -6,6 +6,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.js"></script>
     <!--  react permite crear los componentes  y con el dom uso esos componentes -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react-dom.js"></script>
+    <!-- Traigo babel y lo defino de tipo text -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.2/babel.js"></script>
+    <script type="text/babel">
 
   </head>
   <body>
@@ -13,9 +16,25 @@
     <script>
       function Hola(props){
         const name = props.name;
-        return React.DOM.h1({
-          id: 'Title',
-        }, `Hola ${name}`);
+        return (
+          <h1 id="Title">
+            Hola {name}
+          </h1>
+        );
+        /*return React.DOM.h1({
+          id: 'Title', ES LO MISMO QUE EL RENDER CON H1 DE LA PARTE DE ARRIBA
+        }, `Hola ${name}`); */
+      }
+
+      class MiComponente extends React.Component { /* la Extencion de react.component nos permite ocupar clases para creal componentes */
+        render(){ /* Este es el metodo obligatorio que tienen todos los componentes con clases*/
+          const name= this.props.name; /* LO que hace es recibir le nombre del props con un dis, ya que no le paso el parametro props al render, esta es */
+          return (
+            <h1 id="Title">
+              Hola {name}
+            </h1>
+          );
+        }
       }
 
       const hola= React.createElement(Hola, {
@@ -23,6 +42,7 @@
       });
 
       ReactDOM.render(
+        /*Si yo hiciera un <Hola name="Jorge" /> es lo mismo que el createElement de ARRIBA */
         hola,
         document.getElementById('app')
       );
